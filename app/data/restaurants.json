@@ -1,0 +1,107 @@
+{
+  "+19162514801": {
+    "name": "Le Petit Bistrot",
+    "tagline": "Cuisine française traditionnelle au cœur de Paris",
+    "phone": "+33 1 23 45 67 89",
+    "email": "contact@lepetitbistrot.fr",
+    "website": "https://lepetitbistrot.fr",
+    "address": {
+      "street": "12 rue de la Paix",
+      "postal_code": "75002",
+      "city": "Paris",
+      "country": "France"
+    },
+    "hours": {
+      "monday": "12h-14h30 / 19h-22h30",
+      "tuesday": "12h-14h30 / 19h-22h30",
+      "wednesday": "12h-14h30 / 19h-22h30",
+      "thursday": "12h-14h30 / 19h-22h30",
+      "friday": "12h-14h30 / 19h-23h",
+      "saturday": "19h-23h",
+      "sunday": "Fermé"
+    },
+    "cuisine_type": "Française traditionnelle",
+    "price_range": "€€",
+    "menu": {
+      "starters": [
+        { "name": "Soupe à l'oignon gratinée", "price": "9€" },
+        { "name": "Terrine de campagne maison", "price": "11€" },
+        { "name": "Escargots de Bourgogne (6 pièces)", "price": "12€" }
+      ],
+      "mains": [
+        { "name": "Bœuf bourguignon", "price": "22€" },
+        { "name": "Magret de canard, sauce au miel", "price": "24€" },
+        { "name": "Risotto aux champignons de saison", "price": "18€" }
+      ],
+      "desserts": [
+        { "name": "Crème brûlée", "price": "8€" },
+        { "name": "Tarte Tatin", "price": "8€" }
+      ],
+      "menu_du_jour": {
+        "description": "Entrée + plat + dessert",
+        "price": "18€",
+        "available": "Du lundi au vendredi, midi uniquement"
+      }
+    },
+    "capacity": 40,
+    "reservation_required": false,
+    "payment_methods": ["Carte bancaire", "Espèces", "Tickets restaurant"],
+    "accessibility": "Accès PMR disponible",
+    "parking": "Parking payant à 200m (rue de la Paix)",
+    "wifi": true,
+    "outdoor_seating": true,
+    "pet_friendly": true,
+    "social_media": {
+      "instagram": "@lepetitbistrot.paris",
+      "facebook": "lepetitbistrotparis"
+    },
+    "special_notes": "Menu végétarien disponible sur demande. Fermeture annuelle en août."
+  },
+  "+33999999999": {
+    "name": "Restaurant Exemple",
+    "tagline": "Cuisine fusion créative",
+    "phone": "+33 1 00 00 00 00",
+    "email": "contact@exemple.fr",
+    "website": "https://exemple.fr",
+    "address": {
+      "street": "1 avenue de Test",
+      "postal_code": "75000",
+      "city": "Paris",
+      "country": "France"
+    },
+    "hours": {
+      "monday": "11h-23h",
+      "tuesday": "11h-23h",
+      "wednesday": "11h-23h",
+      "thursday": "11h-23h",
+      "friday": "11h-23h",
+      "saturday": "11h-23h",
+      "sunday": "11h-23h"
+    },
+    "cuisine_type": "Fusion",
+    "price_range": "€€€",
+    "menu": {
+      "starters": [],
+      "mains": [],
+      "desserts": [],
+      "menu_du_jour": {
+        "description": "",
+        "price": "",
+        "available": ""
+      }
+    },
+    "capacity": 30,
+    "reservation_required": true,
+    "payment_methods": ["Carte bancaire"],
+    "accessibility": "Non renseigné",
+    "parking": "Non renseigné",
+    "wifi": false,
+    "outdoor_seating": false,
+    "pet_friendly": false,
+    "social_media": {
+      "instagram": "",
+      "facebook": ""
+    },
+    "special_notes": ""
+  }
+}
