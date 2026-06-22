@@ -2,6 +2,7 @@
   "+19162514801": {
     "name": "Le Petit Bistrot",
     "tagline": "Cuisine française traditionnelle au cœur de Paris",
+    "manager_phone": "+336XXXXXXXX",
     "phone": "+33 1 23 45 67 89",
     "email": "contact@lepetitbistrot.fr",
     "website": "https://lepetitbistrot.fr",
@@ -60,6 +61,7 @@
   "+33999999999": {
     "name": "Restaurant Exemple",
     "tagline": "Cuisine fusion créative",
+    "manager_phone": "+336XXXXXXXX",
     "phone": "+33 1 00 00 00 00",
     "email": "contact@exemple.fr",
     "website": "https://exemple.fr",
