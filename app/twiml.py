@@ -48,6 +48,15 @@ def say_transfer(manager_phone: str, message: str, audio_url: str | None = None)
 </Response>"""
 
 
+def say_hangup(message: str, audio_url: str | None = None) -> str:
+    speak = _speak(message, audio_url)
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    {speak}
+    <Hangup/>
+</Response>"""
+
+
 def say_welcome(restaurant_name: str, audio_url: str | None = None) -> str:
     message = f"Bonjour, bienvenue chez {restaurant_name}. Comment puis-je vous aider ?"
     speak = _speak(message, audio_url)

@@ -8,6 +8,10 @@ from app.config import MAX_HISTORY_TURNS
 
 # { call_sid: [ {"role": "user"|"assistant", "content": "..."}, ... ] }
 _sessions: dict[str, list[dict]] = {}
+_empty_attempts: dict[str, int] = {}
+_pending_transfer: dict[str, bool] = {}
+
+MAX_EMPTY_ATTEMPTS = 3
 
 
 def get_history(call_sid: str) -> list[dict]:
@@ -25,6 +29,25 @@ def add_message(call_sid: str, role: str, content: str) -> None:
 
 def clear(call_sid: str) -> None:
     _sessions.pop(call_sid, None)
+    _empty_attempts.pop(call_sid, None)
+    _pending_transfer.pop(call_sid, None)
+
+
+def increment_empty(call_sid: str) -> int:
+    _empty_attempts[call_sid] = _empty_attempts.get(call_sid, 0) + 1
+    return _empty_attempts[call_sid]
+
+
+def reset_empty(call_sid: str) -> None:
+    _empty_attempts.pop(call_sid, None)
+
+
+def set_pending_transfer(call_sid: str, pending: bool) -> None:
+    _pending_transfer[call_sid] = pending
+
+
+def has_pending_transfer(call_sid: str) -> bool:
+    return _pending_transfer.get(call_sid, False)
 
 
 def is_repeated(call_sid: str, user_text: str) -> bool:
