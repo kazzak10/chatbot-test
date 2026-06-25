@@ -1,61 +1,67 @@
 """
-Synthèse vocale via ElevenLabs.
-Si ElevenLabs est configuré (clé API + voice ID dans .env), on l'utilise.
-Sinon on retombe sur la voix Twilio Polly (fallback automatique).
-
-Pour configurer ElevenLabs :
-1. Crée un compte sur elevenlabs.io
-2. Choisis une voix française dans la bibliothèque (ex: "Charlotte", "Matilda")
-3. Copie le Voice ID depuis la page de la voix
-4. Ajoute dans .env :
-   ELEVENLABS_API_KEY=sk_...
-   ELEVENLABS_VOICE_ID=...
+Synthèse vocale via Google Cloud Text-to-Speech.
+L'audio est stocké en RAM par CallSid et servi via la route /audio/{call_sid}.
 """
 
 import logging
-import httpx
 import base64
-from app.config import ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID
+import httpx
+from app.config import GOOGLE_TTS_API_KEY
 
 logger = logging.getLogger("chatbot")
 
-ELEVENLABS_URL = "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
-ELEVENLABS_ENABLED = bool(ELEVENLABS_API_KEY and ELEVENLABS_VOICE_ID)
+GOOGLE_TTS_URL = "https://texttospeech.googleapis.com/v1/text:synthesize"
+GOOGLE_TTS_ENABLED = bool(GOOGLE_TTS_API_KEY)
+
+# Stockage temporaire de l'audio par call_sid
+_audio_cache: dict[str, bytes] = {}
 
 
-async def generate_audio_base64(text: str) -> str | None:
+async def generate_and_store_audio(call_sid: str, text: str) -> bool:
     """
-    Génère l'audio via ElevenLabs et retourne le base64 de l'audio MP3.
-    Retourne None si ElevenLabs n'est pas configuré ou si la requête échoue.
+    Génère l'audio via Google TTS et le stocke en RAM sous la clé call_sid.
+    Retourne True si succès, False si échec (fallback Polly).
     """
-    if not ELEVENLABS_ENABLED:
-        return None
+    if not GOOGLE_TTS_ENABLED:
+        return False
 
     try:
-        url = ELEVENLABS_URL.format(voice_id=ELEVENLABS_VOICE_ID)
-        headers = {
-            "xi-api-key": ELEVENLABS_API_KEY,
-            "Content-Type": "application/json",
-        }
         payload = {
-            "text": text,
-            "model_id": "eleven_multilingual_v2",
-            "voice_settings": {
-                "stability": 0.5,
-                "similarity_boost": 0.75,
+            "input": {"text": text},
+            "voice": {
+                "languageCode": "fr-FR",
+                "name": "fr-FR-Wavenet-C",
+                "ssmlGender": "FEMALE",
+            },
+            "audioConfig": {
+                "audioEncoding": "MP3",
+                "speakingRate": 1.0,
+                "pitch": 0.0,
             },
         }
         async with httpx.AsyncClient(timeout=10.0) as client:
-            response = await client.post(url, json=payload, headers=headers)
+            response = await client.post(
+                GOOGLE_TTS_URL,
+                json=payload,
+                params={"key": GOOGLE_TTS_API_KEY},
+            )
             response.raise_for_status()
-            audio_base64 = base64.b64encode(response.content).decode("utf-8")
-            logger.info("[VOICE] Audio ElevenLabs généré avec succès")
-            return audio_base64
+            audio_base64 = response.json().get("audioContent", "")
+            if audio_base64:
+                _audio_cache[call_sid] = base64.b64decode(audio_base64)
+                logger.info(f"[VOICE] Audio Google TTS stocké pour {call_sid}")
+                return True
+            return False
 
     except Exception as e:
-        logger.warning(f"[VOICE] ElevenLabs a échoué, fallback Twilio Polly : {e}")
-        return None
+        logger.warning(f"[VOICE] Google TTS échoué, fallback Polly : {e}")
+        return False
 
 
-def is_elevenlabs_enabled() -> bool:
-    return ELEVENLABS_ENABLED
+def get_audio(call_sid: str) -> bytes | None:
+    """Récupère l'audio stocké pour un call_sid."""
+    return _audio_cache.pop(call_sid, None)
+
+
+def is_tts_enabled() -> bool:
+    return GOOGLE_TTS_ENABLED

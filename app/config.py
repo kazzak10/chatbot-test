@@ -15,8 +15,7 @@ RESERVATIONS_FILE = DATA_DIR / "reservations.json"
 
 # ─── Clés API ─────────────────────────────────────────────────────────────────
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY", "")
-ELEVENLABS_VOICE_ID = os.getenv("ELEVENLABS_VOICE_ID", "")
+GOOGLE_TTS_API_KEY = os.getenv("GOOGLE_TTS_API_KEY", "")
 
 # ─── Paramètres conversation ──────────────────────────────────────────────────
 MAX_HISTORY_TURNS = 6  # Nombre max d'échanges gardés par appel (limite coût GPT)
