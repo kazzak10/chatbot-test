@@ -23,8 +23,8 @@ gpt = OpenAI(api_key=OPENAI_API_KEY)
 
 
 def _get_base_url(request: Request) -> str:
-    """Retourne l'URL de base du serveur (ngrok ou prod)."""
-    return str(request.base_url).rstrip("/")
+    """Retourne l'URL de base du serveur (ngrok ou prod), forcée en HTTPS."""
+    return str(request.base_url).rstrip("/").replace("http://", "https://")
 
 
 async def _prepare_audio(call_sid: str, text: str, request: Request) -> str | None:
@@ -167,8 +167,11 @@ async def health_check():
 
 @app.get("/restaurants")
 async def list_restaurants_endpoint(request: Request):
+    expected = os.getenv("DEBUG_TOKEN", "")
+    if not expected:
+        return Response(status_code=403, content="Forbidden")
     token = request.headers.get("X-Debug-Token", "")
-    if token != os.getenv("DEBUG_TOKEN", ""):
+    if token != expected:
         return Response(status_code=403, content="Forbidden")
     return load_restaurants()
 

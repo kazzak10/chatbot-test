@@ -1,5 +1,5 @@
 {
-  "+19162514801": {
+  "x": {
     "name": "Le Petit Bistrot",
     "tagline": "Cuisine française traditionnelle au cœur de Paris",
     "manager_phone": "+336XXXXXXXX",
@@ -58,52 +58,241 @@
     },
     "special_notes": "Menu végétarien disponible sur demande. Fermeture annuelle en août."
   },
-  "+33999999999": {
-    "name": "Restaurant Exemple",
-    "tagline": "Cuisine fusion créative",
-    "manager_phone": "+336XXXXXXXX",
-    "phone": "+33 1 00 00 00 00",
-    "email": "contact@exemple.fr",
-    "website": "https://exemple.fr",
+  "+19162514801": {
+    "name": "Pizza Roma",
+    "tagline": "La vraie pizza napolitaine au cœur de Paris",
+    "tone": "chaleureux, familier, comme un ami italien qui vous accueille",
+    "manager_phone": "+33638057605",
+    "phone": "+33 1 42 33 44 55",
+    "email": "contact@pizzaroma.fr",
+    "website": "https://pizzaroma.fr",
+    "halal": true,
+    "vegetarian_options": true,
+    "vegan_options": true,
     "address": {
-      "street": "1 avenue de Test",
-      "postal_code": "75000",
+      "street": "14 rue de la Roquette",
+      "postal_code": "75011",
       "city": "Paris",
       "country": "France"
     },
     "hours": {
-      "monday": "11h-23h",
-      "tuesday": "11h-23h",
-      "wednesday": "11h-23h",
-      "thursday": "11h-23h",
-      "friday": "11h-23h",
-      "saturday": "11h-23h",
-      "sunday": "11h-23h"
+      "monday": "Fermé",
+      "tuesday": "11h30-14h30 / 18h30-22h30",
+      "wednesday": "11h30-14h30 / 18h30-22h30",
+      "thursday": "11h30-14h30 / 18h30-22h30",
+      "friday": "11h30-14h30 / 18h30-23h30",
+      "saturday": "12h-23h30",
+      "sunday": "12h-22h"
     },
-    "cuisine_type": "Fusion",
-    "price_range": "€€€",
+    "rush_hours": ["12h-13h30", "19h30-21h30"],
+    "cuisine_type": "Pizzeria napolitaine",
+    "price_range": "€€",
+    "delivery": true,
+    "delivery_radius": "3km autour du restaurant",
+    "delivery_time": "30 à 45 minutes",
+    "takeaway": true,
+    "eat_in": true,
+    "capacity": 45,
+    "reservation_required": false,
+    "payment_methods": [
+      "Carte bancaire",
+      "Espèces",
+      "Tickets restaurant",
+      "Lydia",
+      "Sumeria"
+    ],
+    "accessibility": "Accès PMR disponible",
+    "parking": "Parking Bastille à 300m",
+    "wifi": true,
+    "outdoor_seating": true,
+    "pet_friendly": true,
+    "languages": ["Français", "Italien", "Anglais"],
+    "promotions": [
+      "Happy Hour : 2 pizzas achetées = 1 boisson offerte, du mardi au jeudi de 18h30 à 20h",
+      "Menu midi : Pizza + boisson + café à 13,90€, du lundi au vendredi"
+    ],
+    "upsell_suggestions": [
+      "Une boisson fraîche pour accompagner votre pizza ?",
+      "Et pourquoi pas un tiramisu maison pour finir en beauté ?",
+      "Vous avez pensé aux antipasti pour commencer ?"
+    ],
     "menu": {
-      "starters": [],
-      "mains": [],
-      "desserts": [],
+      "antipasti": [
+        {
+          "name": "Bruschetta al pomodoro",
+          "price": "7€",
+          "description": "Pain grillé, tomates fraîches, basilic, huile d'olive",
+          "allergens": ["gluten"],
+          "vegan": true,
+          "halal": true
+        },
+        {
+          "name": "Burrata e prosciutto",
+          "price": "12€",
+          "description": "Burrata crémeuse, jambon de Parme 18 mois, roquette",
+          "allergens": ["lait"],
+          "vegan": false,
+          "halal": false,
+          "note": "Existe en version halal avec jambon de dinde fumé sur demande"
+        },
+        {
+          "name": "Antipasti misto",
+          "price": "14€",
+          "description": "Assortiment de charcuteries italiennes, olives, légumes grillés",
+          "allergens": ["lait", "sulfites"],
+          "vegan": false,
+          "halal": false,
+          "note": "Version halal disponible sur demande"
+        }
+      ],
+      "pizzas": [
+        {
+          "name": "Margherita",
+          "price": "11€",
+          "description": "Sauce tomate San Marzano, mozzarella fior di latte, basilic frais",
+          "allergens": ["gluten", "lait"],
+          "vegan": false,
+          "halal": true,
+          "vegetarian": true,
+          "customizable": true
+        },
+        {
+          "name": "Regina",
+          "price": "13€",
+          "description": "Sauce tomate, mozzarella, jambon blanc, champignons",
+          "allergens": ["gluten", "lait"],
+          "vegan": false,
+          "halal": true,
+          "vegetarian": false,
+          "customizable": true
+        },
+        {
+          "name": "Diavola",
+          "price": "13€",
+          "description": "Sauce tomate, mozzarella, salami piquant, piment",
+          "allergens": ["gluten", "lait"],
+          "vegan": false,
+          "halal": true,
+          "vegetarian": false,
+          "customizable": true
+        },
+        {
+          "name": "Quattro Formaggi",
+          "price": "14€",
+          "description": "Crème fraîche, mozzarella, gorgonzola, parmesan, emmental",
+          "allergens": ["gluten", "lait"],
+          "vegan": false,
+          "halal": true,
+          "vegetarian": true,
+          "customizable": true,
+          "note": "Peut être préparée sans gorgonzola sur demande"
+        },
+        {
+          "name": "Végétarienne",
+          "price": "13€",
+          "description": "Sauce tomate, mozzarella, poivrons grillés, courgettes, aubergines, champignons",
+          "allergens": ["gluten", "lait"],
+          "vegan": false,
+          "halal": true,
+          "vegetarian": true,
+          "customizable": true
+        },
+        {
+          "name": "Napolitaine",
+          "price": "13€",
+          "description": "Sauce tomate, mozzarella, anchois, câpres, olives noires",
+          "allergens": ["gluten", "lait", "poisson"],
+          "vegan": false,
+          "halal": false,
+          "vegetarian": false,
+          "customizable": true
+        },
+        {
+          "name": "Calzone",
+          "price": "14€",
+          "description": "Pizza chausson farcie : mozzarella, jambon, champignons, sauce tomate",
+          "allergens": ["gluten", "lait", "oeufs"],
+          "vegan": false,
+          "halal": true,
+          "vegetarian": false,
+          "customizable": true
+        },
+        {
+          "name": "Pizza du moment",
+          "price": "15€",
+          "description": "Cette semaine : Burrata, roquette, jambon de Parme, tomates cerises",
+          "allergens": ["gluten", "lait"],
+          "vegan": false,
+          "halal": false,
+          "vegetarian": false,
+          "note": "Change chaque semaine selon les arrivages"
+        }
+      ],
+      "desserts": [
+        {
+          "name": "Tiramisu maison",
+          "price": "7€",
+          "description": "Recette traditionnelle, mascarpone, biscuits imbibés de café",
+          "allergens": ["lait", "oeufs", "gluten"],
+          "vegan": false,
+          "halal": true
+        },
+        {
+          "name": "Panna cotta",
+          "price": "6€",
+          "description": "Panna cotta vanille, coulis de fruits rouges",
+          "allergens": ["lait"],
+          "vegan": false,
+          "halal": true
+        },
+        {
+          "name": "Boule de glace",
+          "price": "3€",
+          "description": "Vanille, chocolat ou pistache (1 boule)",
+          "allergens": ["lait", "oeufs"],
+          "vegan": false,
+          "halal": true
+        }
+      ],
+      "boissons": [
+        { "name": "Eau plate ou gazeuse", "price": "3€" },
+        { "name": "Coca-Cola / Fanta / Sprite", "price": "3,50€" },
+        { "name": "Jus de fruits frais", "price": "4,50€" },
+        { "name": "Bière Peroni (25cl)", "price": "4€", "halal": false },
+        {
+          "name": "Vin rouge / blanc / rosé (verre)",
+          "price": "5€",
+          "halal": false
+        },
+        { "name": "Café espresso", "price": "2€" }
+      ],
       "menu_du_jour": {
-        "description": "",
-        "price": "",
-        "available": ""
+        "description": "Pizza au choix + boisson + café",
+        "price": "13,90€",
+        "available": "Du mardi au vendredi, midi uniquement (11h30-14h30)",
+        "note": "Valable sur toutes les pizzas jusqu'à 13€"
       }
     },
-    "capacity": 30,
-    "reservation_required": true,
-    "payment_methods": ["Carte bancaire"],
-    "accessibility": "Non renseigné",
-    "parking": "Non renseigné",
-    "wifi": false,
-    "outdoor_seating": false,
-    "pet_friendly": false,
-    "social_media": {
-      "instagram": "",
-      "facebook": ""
+    "customization_options": {
+      "available": true,
+      "options": [
+        "Sans gluten (supplément 2€, base de farine de riz)",
+        "Sans lactose (supplément 1€, mozzarella végétale)",
+        "Extra fromage (+1€)",
+        "Extra sauce tomate (gratuit)",
+        "Sans oignons, sans anchois, sans champignons (gratuit)",
+        "Bord farci mozzarella (+2€)"
+      ]
     },
-    "special_notes": ""
+    "allergens_info": {
+      "main_allergens": ["gluten", "lait", "oeufs", "poisson"],
+      "gluten_free_option": true,
+      "note": "Notre cuisine utilise des produits contenant du gluten et du lactose. En cas d'allergie sévère, merci de nous prévenir pour que nous prenions toutes les précautions nécessaires."
+    },
+    "social_media": {
+      "instagram": "@pizzaroma.paris",
+      "facebook": "PizzaRomaParis"
+    },
+    "special_notes": "Certifiée Halal (certificat ARGML). Livraison disponible via notre site ou par téléphone. Pas de frais de livraison au-dessus de 25€. Frais de livraison 2,50€ en dessous de 25€."
   }
 }
