@@ -1,4 +1,4 @@
-# 🎙️ Chatbot Vocal Restaurant
+# Chatbot Vocal Restaurant
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.137-009688?style=flat&logo=fastapi&logoColor=white)
